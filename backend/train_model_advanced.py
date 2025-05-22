@@ -1,8 +1,3 @@
-"""
-Mã nguồn huấn luyện mô hình dự đoán điểm số sinh viên
-Phiên bản nâng cao với phân tích dữ liệu kỹ lưỡng và tối ưu hóa mô hình
-"""
-
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
@@ -55,7 +50,7 @@ log_message("===== BẮT ĐẦU HUẤN LUYỆN MÔ HÌNH DỰ ĐOÁN ĐIỂM S�
 # Đọc dữ liệu
 log_message("Đang đọc tập dữ liệu...")
 try:
-    data = pd.read_csv(r'C:\Users\Admin\Downloads\AI\DoAnUngDung_2\csv\student_data_train.csv')
+    data = pd.read_csv(r'C:\Users\Admin\Downloads\AI\INTROAI20242\csv\student_data_train.csv')
     log_message(f"Đọc dữ liệu thành công: {data.shape[0]} dòng và {data.shape[1]} cột")
 except Exception as e:
     log_message(f"Lỗi khi đọc dữ liệu: {str(e)}")
