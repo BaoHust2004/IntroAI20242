@@ -13,7 +13,7 @@ BKLG là một webapp, sử dụng trí tuệ nhân tạo (AI) để hỗ trợ 
 ## 🚪 Tính Năng Chính
 
 - ✏️ **Nhập dữ liệu thủ công** hoặc từ file CSV.
-- 🎨 **Giao diện hiện đại** dựa trên tiêu chuẩn Material Design.
+- 🎨 **Giao diện hiện đại** dựa trên tiêu chuẩn Material Design và font chữ **Fz Poppins**.
 - 💻 **Animation mượt mà**, dễ sử dụng.
 - 🔮 **Tích hợp AI** cho phép dự đoán điểm số sinh viên.
 
@@ -31,6 +31,7 @@ BKLG là một webapp, sử dụng trí tuệ nhân tạo (AI) để hỗ trợ 
 - **🤖 Scikit-learn:** Thư viện máy học mạnh mẽ.
 - **📊 Pandas & NumPy:** Xử lý và phân tích dữ liệu.
 - **📦 Joblib:** Lưu và tải mô hình AI.
+- **📈 Matplotlib:** Vẽ biểu đồ trực quan hóa dữ liệu.
 
 ---
 
