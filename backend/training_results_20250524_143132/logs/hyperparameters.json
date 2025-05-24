@@ -1,4 +1,9 @@
 {
+    "Linear Regression": {
+        "copy_X": true,
+        "fit_intercept": true,
+        "positive": true
+    },
     "C\u00e2y quy\u1ebft \u0111\u1ecbnh": {
         "criterion": "absolute_error",
         "max_depth": null,

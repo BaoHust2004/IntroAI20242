@@ -254,12 +254,9 @@ log_message("\n=== HUẤN LUYỆN MÔ HÌNH ===")
 
 # Danh sách các mô hình sẽ huấn luyện
 models = {
-    'Hồi quy tuyến tính': LinearRegression(),
-    'Ridge': Ridge(),
-    'Lasso': Lasso(),
+    'Linear Regression': LinearRegression(),
     'Cây quyết định': DecisionTreeRegressor(random_state=42),
     'Random Forest': RandomForestRegressor(random_state=42),
-    'Gradient Boosting': GradientBoostingRegressor(random_state=42),
     'XGBoost': xgb.XGBRegressor(random_state=42)
 }
 
@@ -369,10 +366,34 @@ best_xgb = xgb_grid.best_estimator_
 log_message(f"Siêu tham số tốt nhất cho XGBoost: {xgb_grid.best_params_}")
 log_message(f"RMSE tốt nhất từ CV: {np.sqrt(-xgb_grid.best_score_):.4f}")
 
+# Thêm grid search cho Linear Regression
+log_message("\nĐang tối ưu hóa siêu tham số cho mô hình Linear Regression...")
+lr_param_grid = {
+    'fit_intercept': [True, False],
+    'copy_X': [True, False],
+    'positive': [True, False]
+}
+
+lr_grid = GridSearchCV(
+    LinearRegression(),
+    lr_param_grid,
+    cv=5,
+    scoring='neg_mean_squared_error',
+    verbose=1,
+    n_jobs=-1
+)
+
+lr_grid.fit(X_train, y_train)
+best_lr = lr_grid.best_estimator_
+
+log_message(f"Siêu tham số tốt nhất cho Linear Regression: {lr_grid.best_params_}")
+log_message(f"RMSE tốt nhất từ CV: {np.sqrt(-lr_grid.best_score_):.4f}")
+
 # Đánh giá mô hình tối ưu trên tập kiểm tra
 log_message("\n=== ĐÁNH GIÁ MÔ HÌNH CUỐI CÙNG ===")
 
 optimized_models = {
+    'Linear Regression (tối ưu)': best_lr,
     'Cây quyết định (tối ưu)': best_dt,
     'Random Forest (tối ưu)': best_rf,
     'XGBoost (tối ưu)': best_xgb
@@ -451,6 +472,7 @@ with open('models/feature_names.json', 'w') as f:
 
 # Lưu tối ưu hóa siêu tham số
 optimization_params = {
+    'Linear Regression': lr_grid.best_params_,
     'Cây quyết định': dt_grid.best_params_,
     'Random Forest': rf_grid.best_params_,
     'XGBoost': xgb_grid.best_params_
