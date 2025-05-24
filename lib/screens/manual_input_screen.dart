@@ -34,7 +34,7 @@ class _ManualInputScreenState extends State<ManualInputScreen> {
 
   // Controllers cho các trường input số
   final TextEditingController _ageController =
-      TextEditingController(text: '15');
+      TextEditingController(text: '18');
   final TextEditingController _meduController =
       TextEditingController(text: '4');
   final TextEditingController _feduController =
@@ -57,11 +57,11 @@ class _ManualInputScreenState extends State<ManualInputScreen> {
       TextEditingController(text: '3');
   final TextEditingController _absencesController =
       TextEditingController(text: '0');
-  final TextEditingController _g1Controller = TextEditingController(text: '5');
+  final TextEditingController _g1Controller = TextEditingController(text: '7');
   final TextEditingController _g2Controller = TextEditingController(text: '6');
 
   // Giá trị cho các dropdown
-  String _school = "GP";
+  String _school = "SOICT";
   String _sex = "F";
   String _address = "U";
   String _famsize = "GT3";
@@ -94,16 +94,16 @@ class _ManualInputScreenState extends State<ManualInputScreen> {
     try {
       // Kiểm tra age
       int age = int.parse(_ageController.text);
-      if (age < 15 || age > 22) {
-        _errorMessage = 'Tuổi phải từ 15-22';
+      if (age < 18 || age > 22) {
+        _errorMessage = 'Tuổi phải từ 18-22';
         return false;
       }
 
       // Kiểm tra điểm số
       int g1 = int.parse(_g1Controller.text);
       int g2 = int.parse(_g2Controller.text);
-      if (g1 < 0 || g1 > 20 || g2 < 0 || g2 > 20) {
-        _errorMessage = 'Điểm số phải từ 0-20';
+      if (g1 < 0 || g1 > 10 || g2 < 0 || g2 > 10) {
+        _errorMessage = 'Điểm số phải từ 0-10';
         return false;
       }
 
@@ -167,8 +167,8 @@ class _ManualInputScreenState extends State<ManualInputScreen> {
         return false;
       }
 
-      if (absences < 0 || absences > 93) {
-        _errorMessage = 'Số buổi vắng phải từ 0-93';
+      if (absences < 0 || absences > 4) {
+        _errorMessage = 'Số buổi vắng phải từ 0-4';
         return false;
       }
 
@@ -706,7 +706,7 @@ class _ManualInputScreenState extends State<ManualInputScreen> {
             'Trường',
             _school,
             (value) => setState(() => _school = value),
-            options: {'GP': 'Gabriel Pereira', 'MS': 'Mousinho da Silveira'},
+            options: {'SOICT': 'SOICT', 'SEEE': 'SEEE'},
           ),
           _buildToggleField(
             'Giới tính',
@@ -860,7 +860,7 @@ class _ManualInputScreenState extends State<ManualInputScreen> {
             options: {'yes': 'Có', 'no': 'Không'},
           ),
           _buildToggleField(
-            'Muốn học đại học',
+            'Mong muốn học đại học',
             _higher,
             (value) => setState(() => _higher = value),
             options: {'yes': 'Có', 'no': 'Không'},
@@ -1016,13 +1016,13 @@ class _ManualInputScreenState extends State<ManualInputScreen> {
                             ),
                             textAlign: TextAlign.center,
                             decoration: const InputDecoration(
-                              hintText: '0-20',
+                              hintText: '0-10',
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.symmetric(
                                 horizontal: 16,
                                 vertical: 16,
                               ),
-                              suffixText: '/20',
+                              suffixText: '/10',
                               suffixStyle: TextStyle(
                                   fontSize: 16, color: Color(0xFF2969FF)),
                             ),
@@ -1077,13 +1077,13 @@ class _ManualInputScreenState extends State<ManualInputScreen> {
                             ),
                             textAlign: TextAlign.center,
                             decoration: const InputDecoration(
-                              hintText: '0-20',
+                              hintText: '0-10',
                               border: InputBorder.none,
                               contentPadding: EdgeInsets.symmetric(
                                 horizontal: 16,
                                 vertical: 16,
                               ),
-                              suffixText: '/20',
+                              suffixText: '/10',
                               suffixStyle: TextStyle(
                                 fontSize: 16,
                                 color: Color.fromRGBO(52, 199, 89, 1),
@@ -1135,7 +1135,7 @@ class _ManualInputScreenState extends State<ManualInputScreen> {
                     content: StatefulBuilder(
                       builder: (context, setDialogState) => NumberPicker(
                         value: currentValue,
-                        minValue: 15,
+                        minValue: 18,
                         maxValue: 22,
                         onChanged: (value) {
                           setDialogState(() {

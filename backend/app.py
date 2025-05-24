@@ -39,13 +39,13 @@ def predict():
         print("Prediction:", prediction)  # Debug line
         
         # Xếp loại điểm
-        if prediction >= 18:
+        if prediction >= 9:
             status = "Xuất sắc"
-        elif prediction >= 16:
+        elif prediction >= 8:
             status = "Giỏi"
-        elif prediction >= 13:
+        elif prediction >= 6.5:
             status = "Khá" 
-        elif prediction >= 10:
+        elif prediction >= 5:
             status = "Trung bình"
         else:
             status = "Yếu"
@@ -54,7 +54,7 @@ def predict():
             'success': True,
             'prediction': prediction,
             'status': status,
-            'message': f'Điểm dự đoán: {prediction:.1f}/20 - {status}'
+            'message': f'Điểm dự đoán: {prediction:.1f}/10 - {status}'
         })
         
     except Exception as e:

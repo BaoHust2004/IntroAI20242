@@ -6,7 +6,7 @@ class PredictionResult extends StatelessWidget {
   const PredictionResult({super.key, required this.prediction});
 
   Map<String, String> _parseResult(String prediction) {
-    final regex = RegExp(r'Điểm dự đoán: (\d+\.\d+)/20 - (.+)');
+    final regex = RegExp(r'Điểm dự đoán: (\d+\.\d+)/10 - (.+)');
     final match = regex.firstMatch(prediction);
     return {
       'score': match?.group(1) ?? '0.0',
@@ -91,7 +91,7 @@ class PredictionResult extends StatelessWidget {
                       children: [
                         _buildResultBox(
                           'Điểm số',
-                          '${result['score']}/20',
+                          '${result['score']}/10',
                           Icons.score,
                         ),
                         Container(
